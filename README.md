@@ -20,3 +20,5 @@ Hãy viết chương trình tìm số Fibonacci thứ n.
  - nhập vào 1 chuỗi, và 1 ký tự bất kỳ, ký tự đó để tách xâu thành các ký tự riêng rẽ. ví dụ:
  nhập "hello world" và ký tự space, expect:[hello, world], trả ra mảng 2 phần tử
  
+## tài liệu
+https://cuuduongthancong.com/u/dhkhtnhcm/dh-khoa-hoc-tu-nhien-hcm/hcmus?src=breadcrumb
