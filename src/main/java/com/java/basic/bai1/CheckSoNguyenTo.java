@@ -8,7 +8,6 @@ public class CheckSoNguyenTo {
 		  
 		boolean question = true;
 		while (question) {
-			// TODO Auto-generated method stub
 			System.out.println(" Moi ban nhap vao mot so bat ky");
 			Scanner keyboard = new Scanner(System.in);
 			int enemy = keyboard.nextInt();
