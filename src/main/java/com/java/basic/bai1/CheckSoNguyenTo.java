@@ -9,6 +9,7 @@ public class CheckSoNguyenTo {
 		boolean question = true;
 		while (question) {
 			System.out.println(" Moi ban nhap vao mot so bat ky");
+			@SuppressWarnings("resource")
 			Scanner keyboard = new Scanner(System.in);
 			int enemy = keyboard.nextInt();
 			int count = 0;
@@ -16,7 +17,7 @@ public class CheckSoNguyenTo {
 			if ((enemy == 1) || (enemy == 2))
 				System.out.println(" LA SO NGUYEN TO");
 			else {
-				for (int i = 2; i < enemy/2; i++) {
+				for (int i = 2; i < Math.sqrt(enemy); i++) {
 					if (enemy % i == 0) {
 						count += 1;
 					}
@@ -34,5 +35,13 @@ public class CheckSoNguyenTo {
 		}
 		 
 	}
+	/* Thuat toan chua toi uu vi 
+	 * Sau khi break ra khoi vong lap, thi so do la So Nguyen tO roi, thi nen
+	 * return ra ket qua luon
+	 * Ko can phai kiem tra xem count == 0 nua. Thua 1 buoc !!!
+	 *
+	 * Lam lai...
+	 * 
+	 * */
 	
 }

@@ -1,6 +1,7 @@
 package com.java.basic.bai1;
 
 import java.util.Scanner;
+import java.lang.Math;
 
 public class GetSntValueFromAnArray {
 
@@ -10,17 +11,16 @@ public class GetSntValueFromAnArray {
 		int j = 0;
 		boolean test = Check(arr[j]);
 		System.out.println(" Moi ban nhap mang");
-		for (int i = 0; i < arr.length; i++) {
+		for (int i = 0; i < 10; i++) {
 			arr[i] = Nhapmang.nextInt();
 		}
-		/*for (j = 0; j < arr.length; j++) {
+		
+		for (j = 0; j < arr.length; j++) {
 
 			if (test == true)
 				System.out.println(arr[j]);
-		}*/
-		while (test == true) {
-			// Dang xu li tiep
 		}
+		
 
 	}
 
@@ -29,7 +29,7 @@ public class GetSntValueFromAnArray {
 		int count = 0;
 		if ((n == 1) || (n == 2))
 			return true;
-		for (int i = 2; i < n / 2; i++) {
+		for (int i = 1; i < Math.sqrt(n); i++) {
 			if (n % i == 0) {
 				count += 1;
 
@@ -47,8 +47,12 @@ public class GetSntValueFromAnArray {
 
 	// BUBBLE SHORT
 	public static void Sort(int[] mang) {
-		for (int i = 0; i < mang.length - 1; i++)
-			for (int j = 1; j < mang.length; j++) {
+		int i=0;
+		int j =1;
+		boolean test = Check(i);
+		boolean test2= Check(j);
+		for ( i = 0; i < mang.length - 1; i++)
+			for ( j = 1; j < mang.length; j++) {
 				int tempo = mang[0];
 				if (mang[i] > mang[j]) {
 					tempo = mang[i];
