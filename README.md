@@ -5,7 +5,9 @@ This is a simple project to learn java basic
 cho 1 mảng các số nguyên, sắp xếp các số nguyên tố trong mảng đó theo thứ tự tăng dần (chỉ đổi chỗ số nguyên tố, các số còn lại phải giữ vị trí của nó)
 ví dụ: [2,44,55,7, 9, 10, 11] =sort=> [2,44,7,11,9,10,55]
 ## bài 2:
-cho 1 mảng 5 phần tử bất kỳ, nhập từ bàn phím 1 số bất kỳ và vị trí mong muốn ADD trong mảng đã cho, in ra màn hình kết quả
+- cho 1 mảng 5 phần tử bất kỳ, nhập từ bàn phím 1 số bất kỳ và vị trí mong muốn ADD trong mảng đã cho, in ra màn hình kết quả
+- tạo 1 phương thức peek, trả ra phần tử cuối cùng mà không remove phần tử ra khỏi mảng
+- tạo 1 phương thức pop, tương tự peek nhưng remove phần tử đó
 ## bài 3
 tương tự bài 2, làm cho REMOVE
 ## bài 4
