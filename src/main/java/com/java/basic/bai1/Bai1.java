@@ -2,6 +2,12 @@ package com.java.basic.bai1;
 
 import java.util.Arrays;
 
+/**
+ * nhập vào 1 mảng, sắp xếp các số nguyên tố theo thứ tự tăng dần rồi in ra
+ * 
+ * @author truonglv
+ *
+ */
 public class Bai1 {
 
 	public static void main(String[] args) {
