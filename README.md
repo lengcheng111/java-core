@@ -22,3 +22,4 @@ Hãy viết chương trình tìm số Fibonacci thứ n.
  
 ## tài liệu
 https://cuuduongthancong.com/u/dhkhtnhcm/dh-khoa-hoc-tu-nhien-hcm/hcmus?src=breadcrumb
+http://tutorials.jenkov.com/java-concurrency/thread-pools.html
