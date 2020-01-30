@@ -23,8 +23,10 @@ Hãy viết chương trình tìm số Fibonacci thứ n.
  Tạo 1 danh sách sinh viên, quản lý các thông tin, cmt, hoten, tuoi, điểm, quequan.
 các chức năng:
 1.thêm, xóa, sửa, cập nhật
-2. sắp xếp danh sách sinh viên theo tuổi tăng dần
-3.sắp xếp danh sách sinh viên theo điểm giảm dần
+2. Sắp xếp danh sách sinh viên theo tuổi tăng dần
+3. Sắp xếp danh sách sinh viên theo điểm giảm dần
+4. Tìm kiếm theo tên, nhập gần đúng
+5. Tìm kiếm những sinh viên có tên giống nhau
  
 ## tài liệu
 https://cuuduongthancong.com/u/dhkhtnhcm/dh-khoa-hoc-tu-nhien-hcm/hcmus?src=breadcrumb
