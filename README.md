@@ -19,6 +19,12 @@ Hãy viết chương trình tìm số Fibonacci thứ n.
  - nhập vào 1 chuỗi, và 1 ký tự, in ra vị trí cuối cùng xuất hiện lần đầu tiên của chuỗi (lastIndexOf)
  - nhập vào 1 chuỗi, và 1 ký tự bất kỳ, ký tự đó để tách xâu thành các ký tự riêng rẽ. ví dụ:
  nhập "hello world" và ký tự space, expect:[hello, world], trả ra mảng 2 phần tử
+ ## bài 6
+ Tạo 1 danh sách sinh viên, quản lý các thông tin, cmt, hoten, tuoi, điểm, quequan.
+các chức năng:
+1.thêm, xóa, sửa, cập nhật
+2. sắp xếp danh sách sinh viên theo tuổi tăng dần
+3.sắp xếp danh sách sinh viên theo điểm giảm dần
  
 ## tài liệu
 https://cuuduongthancong.com/u/dhkhtnhcm/dh-khoa-hoc-tu-nhien-hcm/hcmus?src=breadcrumb
