@@ -27,11 +27,11 @@ public class StackDemo {
 		} else {
 			arr[this.size] = item;
 		}
-		// 5 Chi tang size mang thi item khac 0
-		if (item != 0) {
-			this.size++;
-		}
+		this.size++;
+	}
 
+	public int sizeOfArray() {
+		return this.arr.length;
 	}
 
 	/**
