@@ -14,7 +14,8 @@ public class StackDemo {
 	public void add(int item) {
 		if (this.size == arr.length) {
 			// 1. Tao mot mang moi co kich thuoc lon hon gap 1.5 lan
-			int[] newArr = new int[(int) (this.size * 1.5)];
+			int increaseSize = (int) (this.size * 1.5);
+			int[] newArr = new int[increaseSize];
 			// 2. Copy mang cu vao mang moi
 			for (int i = 0; i < arr.length; i++) {
 				newArr[i] = arr[i];
@@ -27,18 +28,6 @@ public class StackDemo {
 			arr[this.size] = item;
 		}
 		this.size++;
-	}
-
-	public int sizeOfArray() {
-		return this.arr.length;
-	}
-
-	/**
-	 * add an element to array, located by index ( defined by user ) & value (
-	 * defined by user)
-	 *
-	 */
-	public void add(int item, int index) {
 	}
 
 	/**
