@@ -57,6 +57,7 @@ public class StackDemo {
 		for (int i = 0; i < this.size - 1; i++) {
 			newArr[i] = arr[i];
 		}
+		this.arr[this.size] = 0;
 		// giảm biến this.size
 		this.size--;
 		// gán lại mảng
