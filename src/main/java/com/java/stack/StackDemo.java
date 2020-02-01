@@ -5,7 +5,6 @@ import java.util.Arrays;
 public class StackDemo {
 	private static int CAPACITY = 10;
 	private int size;
-	private int checkfull;
 	private int[] arr = new int[CAPACITY];
 
 	/**
@@ -47,23 +46,21 @@ public class StackDemo {
 	 *
 	 */
 	public void pop() {
-		int remove = 0;
-		// 1. Xác định vị trí đầu tiên có value khác 0 từ phải qua trái của mảng
-		for (int i = arr.length - 1; i > 0; i--) {
-			if (arr[i] != 0) {
-				remove = i;
-				System.out.println("You have just pop => " + arr[i]);
-				break;
-			}
-		}
-		// 2. Khai báo một mảng có kích thướng nhỏ hơn mảng cũ 1 đơn vị
-		int[] newArr = new int[arr.length - 1];
-		this.size--;
-		// 3. Các các phần tử phía sau arr[remove] cho mảng mới
-		for (int i = 0; i < remove; i++) {
+		/**
+		 * Ý tưởng: Sau mỗi lần add mảng sẽ mang thông tin real size ( trong biến
+		 * this.size ). ta dùng thông tin đó để gán mảng cũ cho mảng mới: Bằng cách lấy
+		 * phần tử đứng sau trước id(this.size - 1) làm mốc. Pop-up thông báo mảng rỗng
+		 * khi ko pop quá mức.
+		 */
+		// Khai báo một mảng mới, kích thước có thể bằng mảng cũ
+		int[] newArr = new int[arr.length];
+		// Trong ý tưởng
+		for (int i = 0; i < this.size - 1; i++) {
 			newArr[i] = arr[i];
 		}
-		// 4. Gán lại cho mảng cũ
+		// giảm biến this.size
+		this.size--;
+		// gán lại mảng
 		this.arr = newArr;
 	}
 
