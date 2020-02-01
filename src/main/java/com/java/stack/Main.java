@@ -12,7 +12,6 @@ public class Main {
 
 		st.print();
 		System.out.println("Actual size:" + st.size());
-		System.out.println("Memory size:" + st.sizeOfArray());
 	}
 
 }
