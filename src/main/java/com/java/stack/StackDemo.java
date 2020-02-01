@@ -46,40 +46,19 @@ public class StackDemo {
 	 *
 	 */
 	public void pop() {
-		/**
-		 * Ý tưởng: Sau mỗi lần add mảng sẽ mang thông tin real size ( trong biến
-		 * this.size ). ta dùng thông tin đó để gán mảng cũ cho mảng mới: Bằng cách lấy
-		 * phần tử đứng trước id(this.size - 1) làm mốc.
-		 */
-		// Khai báo một mảng mới, kích thước có thể bằng mảng cũ
-		int[] newArr = new int[arr.length];
-		// Trong ý tưởng
-		for (int i = 0; i < this.size - 1; i++) {
-			newArr[i] = arr[i];
-		}
-		this.arr[this.size] = 0;
-		// giảm biến this.size
+		// Thay thế TOP = 0
+		arr[this.size - 1] = 0;
+		// Giảm size
 		this.size--;
-		// gán lại mảng
-		this.arr = newArr;
+
 	}
 
 	/**
 	 * Get Value of the Value at the TOP of array without remove it.
 	 *
 	 */
-	public void peek() {
-		// 1. Chọn ra phần tử đầu tiên khác 0 từ phải qua trái trong mảng
-		for (int i = arr.length - 1; i > 0; i--) {
-			if (arr[i] != 0) {
-				// 2. In ra màn hình kết quả
-				System.out.println("You have just peek =>" + arr[i]);
-				break;
-			} else {
-				continue;
-			}
-			// 3. Vòng for kết thúc khi chọn được giá trị đầu tiên
-		}
+	public int peek() {
+		return arr[this.size - 1];
 	}
 
 	/**
