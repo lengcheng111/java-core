@@ -58,6 +58,19 @@ public class StackDemoTest {
 		stackDemo.peek();
 		Assert.assertEquals(20, stackDemo.size());
 	}
+
+	@Test
+	public void testAddManyNumberThenPeekWillReturnTheLastOne() {
+		StackDemo stackDemo = new StackDemo();
+		// I will add 50 items, from 1 to 50, and hope after I peek I will get the
+		// number 50
+		for (int i = 1; i <= 50; i++) {
+			stackDemo.add(i);
+		}
+		stackDemo.peek();
+		Assert.assertEquals(50, stackDemo.peek());
+	}
+
 	// đó e, có thể viết càng nhiều càng tốt.
 	// e fix tiếp ddi nhé
 	// Mỗi lần e test thì nó chỉ chạy trên một method thôi ạ ?
