@@ -49,8 +49,7 @@ public class StackDemo {
 		/**
 		 * Ý tưởng: Sau mỗi lần add mảng sẽ mang thông tin real size ( trong biến
 		 * this.size ). ta dùng thông tin đó để gán mảng cũ cho mảng mới: Bằng cách lấy
-		 * phần tử đứng sau trước id(this.size - 1) làm mốc. Pop-up thông báo mảng rỗng
-		 * khi ko pop quá mức.
+		 * phần tử đứng trước id(this.size - 1) làm mốc.
 		 */
 		// Khai báo một mảng mới, kích thước có thể bằng mảng cũ
 		int[] newArr = new int[arr.length];
