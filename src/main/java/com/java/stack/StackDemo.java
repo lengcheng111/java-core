@@ -3,7 +3,7 @@ package com.java.stack;
 import java.util.Arrays;
 
 public class StackDemo {
-	private static int CAPACITY = 10;
+	private static final int CAPACITY = 10;
 	private int size;
 	private int[] arr = new int[CAPACITY];
 
