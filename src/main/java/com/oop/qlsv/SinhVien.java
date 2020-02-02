@@ -2,44 +2,11 @@ package com.oop.qlsv;
 
 import java.util.Scanner;
 
-/**
- * @author truonglv Tạo 1 danh sách sinh viên, quản lý các thông tin, cmt,
- *         hoten, tuoi, điểm, quequan. các chức năng: 1.thêm, xóa, sửa, cập nhật
- *         2. Sắp xếp danh sách sinh viên theo tuổi tăng dần 3. Sắp xếp danh
- *         sách sinh viên theo điểm giảm dần 4. Tìm kiếm theo tên, nhập gần đúng
- *         5. Tìm kiếm những sinh viên có tên giống nhau
- *
- */
 public class SinhVien {
-	private int id;
+
 	private String name;
+	private String major;
 	private int age;
-	private float score;
-	private String address;
-
-	// Viet ham nhap input thong tin sinh vien
-	public void nhap() {
-		Scanner keyboard = new Scanner(System.in);
-		System.out.print(" ID NUMBER: ");
-		id = keyboard.nextInt();
-		System.out.print(" NAME: ");
-		name = keyboard.next();
-		System.out.print(" AGE: ");
-		age = keyboard.nextInt();
-		System.out.print(" IELTS SCORE: ");
-		score = keyboard.nextFloat();
-		System.out.print(" ADDRESS: ");
-		address = keyboard.next();
-
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;
@@ -49,28 +16,49 @@ public class SinhVien {
 		this.name = name;
 	}
 
-	public int getTuoi() {
+	public String getMajor() {
+		return major;
+	}
+
+	public void setMajor(String major) {
+		this.major = major;
+	}
+
+	public int getAge() {
 		return age;
 	}
 
-	public void setTuoi(int tuoi) {
-		this.age = tuoi;
+	public void setAge(int age) {
+		this.age = age;
 	}
 
-	public float getScore() {
-		return score;
+	// DEFINE PARTICULARY CONSTRUCT
+	public SinhVien(String name, String major, int age) {
+		this.name = name;
+		this.major = major;
+		this.age = age;
 	}
 
-	public void setScore(float score) {
-		this.score = score;
+	// CONSTRUCT BIG
+	public SinhVien() {
+
 	}
 
-	public String getHomeTown() {
-		return address;
+	// Define INPUT
+	public void input() {
+		Scanner keyboard = new Scanner(System.in);
+
+		System.out.println(" Enter name : ");
+		keyboard.nextLine();
+		System.out.println(" Enter major : ");
+		keyboard.nextLine();
+		System.out.println(" Enter age : ");
+		keyboard.nextInt();
 	}
 
-	public void setHomeTown(String homeTown) {
-		this.address = homeTown;
+	// Define OUPUT
+	public void display() {
+		System.out.println(" " + getName() + " " + getMajor() + " " + getAge());
 	}
 
 }
