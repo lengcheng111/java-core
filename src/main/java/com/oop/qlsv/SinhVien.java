@@ -1,12 +1,11 @@
 package com.oop.qlsv;
 
-import java.util.Scanner;
-
 public class SinhVien {
 
 	private String name;
-	private String major;
-	private int age;
+	private String address;
+	private int tuoi;
+	private float diem;
 
 	public String getName() {
 		return name;
@@ -16,49 +15,36 @@ public class SinhVien {
 		this.name = name;
 	}
 
-	public String getMajor() {
-		return major;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setMajor(String major) {
-		this.major = major;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public int getAge() {
-		return age;
+	public int getTuoi() {
+		return tuoi;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public void setTuoi(int tuoi) {
+		this.tuoi = tuoi;
 	}
 
-	// DEFINE PARTICULARY CONSTRUCT
-	public SinhVien(String name, String major, int age) {
+	public float getDiem() {
+		return diem;
+	}
+
+	public void setDiem(float diem) {
+		this.diem = diem;
+	}
+
+	// tao constructor
+	public SinhVien(String name, String address, int tuoi, float diem) {
 		this.name = name;
-		this.major = major;
-		this.age = age;
-	}
-
-	// CONSTRUCT BIG
-	public SinhVien() {
-
-	}
-
-	// Define INPUT
-	public void input() {
-		Scanner keyboard = new Scanner(System.in);
-
-		System.out.println(" Enter name : ");
-		keyboard.nextLine();
-		System.out.println(" Enter major : ");
-		keyboard.nextLine();
-		System.out.println(" Enter age : ");
-		keyboard.nextInt();
-	}
-
-	// Define OUPUT
-	public void display() {
-		System.out.println(" " + getName() + " " + getMajor() + " " + getAge());
+		this.address = address;
+		this.tuoi = tuoi;
+		this.diem = diem;
 	}
 
 }
