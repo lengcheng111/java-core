@@ -1,12 +1,14 @@
 package com.oop.qlsv;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.io.Serializable;
 import java.util.Scanner;
 
 public class QuanLySinhVien {
 	// khai báo mảng lưu trữ thông tin sinh viên
 	private static SinhVien[] data;
-	private static Scanner keyboard;
 	private static int size;
 
 	public static void main(String[] args) { // hàm thực thi công việc chính
@@ -47,17 +49,49 @@ public class QuanLySinhVien {
 	// Định nghĩa các chức năng thêm/ sửa / xóa...
 	public static void themSinhVien() {
 		// ten, dia chi, tuoi, so cmnt, diem ielts
+		String ten;
+		String diaChi;
+		int tuoi;
+		int soCmt;
+		float diemIelts;
+		Scanner keyboard = new Scanner(System.in);
 		SinhVien sv = new SinhVien();
 		System.out.println("Nhập tên:");
-		sv.setTen(keyboard.nextLine());
+		ten = keyboard.nextLine();
 		System.out.println("Nhập địa chỉ:");
-		sv.setDiaChi(keyboard.nextLine());
+		diaChi = keyboard.nextLine();
 		System.out.println("Nhập tuổi:");
-		sv.setTuoi(keyboard.nextInt());
+		tuoi = keyboard.nextInt();
 		System.out.println("Nhập số chứng minh thư");
-		sv.setSoCmt(keyboard.nextInt());
+		soCmt = keyboard.nextInt();
 		System.out.println("Nhập số điểm Ielts");
-		sv.setDiemIelts(keyboard.nextFloat());
+		diemIelts = keyboard.nextFloat();
+		sv.setTen(ten);
+		sv.setDiaChi(diaChi);
+		sv.setDiemIelts(diemIelts);
+		sv.setSoCmt(soCmt);
+		sv.setTuoi(tuoi);
+
+		try {
+			// Create A file
+			File sinhVienFile = new File("Sinhvien.txt");
+			// Create A writer
+			PrintStream writer = new PrintStream(sinhVienFile);
+			// Save elements in Array one by one
+			data[size] = sv;
+			writer.println(sv.getTen());
+			writer.println(sv.getDiaChi());
+			writer.println(sv.getDiemIelts());
+			writer.println(sv.getSoCmt());
+			writer.println(sv.getTuoi());
+
+			size++;
+			// Close writer
+			writer.close();
+		} // end try
+		catch (FileNotFoundException fnf) {
+			System.err.println("The file was not found.");
+		}
 
 	}
 
@@ -69,9 +103,8 @@ public class QuanLySinhVien {
 
 	}
 
-	public static void add(SinhVien item) {
-		data[size] = item;
-		size++;
+	public int size() {
+		return this.size();
 	}
 }
 
