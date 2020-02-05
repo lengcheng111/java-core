@@ -64,7 +64,7 @@ public class QuanLySinhVien {
 	private static void sapXepSvTheoTuoiTangDan() {
 		for (int i = 0; i < data.length; i++) {
 			final boolean notNull = isNotNull(data[i]);
-			for (int j = 1; j < data.length; j++) {
+			for (int j = i + 1; j < data.length; j++) {
 				if (notNull && isNotNull(data[j]) && (data[i].getTuoi() > data[j].getTuoi())) {
 					SinhVien temp = data[i];
 					data[i] = data[j];
@@ -78,7 +78,7 @@ public class QuanLySinhVien {
 	private static void sapXepSvTheoDiemGiamDan() {
 		for (int i = 0; i < data.length; i++) {
 			final boolean notNull = isNotNull(data[i]);
-			for (int j = 1; j < data.length; j++) {
+			for (int j = i + 1; j < data.length; j++) {
 				if (notNull && isNotNull(data[j]) && (data[i].getDiemIelts() < data[j].getDiemIelts())) {
 					SinhVien temp = data[i];
 					data[i] = data[j];
@@ -233,7 +233,6 @@ class SinhVien implements Serializable { // Chỗ này để lưu trữ thông t
 
 	@Override
 	public String toString() {
-		return "SinhVien [ten=" + ten + ", diaChi=" + diaChi + ", tuoi=" + tuoi + ", soCmt=" + soCmt + ", diemIelts="
-				+ diemIelts + "]";
+		return ten + "\t" + diaChi + "\t" + tuoi + "\t" + soCmt + "\t" + diemIelts;
 	}
 }
