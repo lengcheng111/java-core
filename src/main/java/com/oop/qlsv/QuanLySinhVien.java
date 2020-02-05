@@ -63,6 +63,7 @@ public class QuanLySinhVien {
 			return true;
 	}
 
+	// test
 	private static void sapXepSvTheoTuoiTangDan() {
 		for (int i = 0; i < data.length; i++) {
 			final boolean notNull = isNotNull(data[i]);
