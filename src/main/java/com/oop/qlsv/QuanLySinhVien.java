@@ -40,9 +40,11 @@ public class QuanLySinhVien {
 				break;
 			case (5):
 				sapXepSvTheoDiemGiamDan();
+				showAll();
 				break;
 			case (6):
 				sapXepSvTheoTuoiTangDan();
+				showAll();
 				break;
 
 			}
