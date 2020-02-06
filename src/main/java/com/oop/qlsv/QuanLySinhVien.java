@@ -1,8 +1,9 @@
 package com.oop.qlsv;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.PrintStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Scanner;
 
@@ -10,7 +11,7 @@ public class QuanLySinhVien {
 	private static SinhVien[] data;
 	private static int size;
 
-	public static void main(String[] args) { // hàm thực thi công việc chính
+	public static void main(String[] args) throws FileNotFoundException, IOException { // hàm thực thi công việc chính
 		data = new SinhVien[100];
 		String repeat = null;
 		int option;
@@ -28,18 +29,25 @@ public class QuanLySinhVien {
 			switch (option) {
 			case (1):
 				themSinhVien();
+				System.out.println("Số lượng sinh viên hiện tại:\t " + size);
+				// save file
 				break;
 			case (2):
 				editSinhVien();
+				// save file
 				break;
 			case (3):
 				xoaSinhVien();
+				showAll();
+				System.out.println("Số lượng sinh viên hiện tại:\t" + size);
+				// save file
 				break;
 			case (4):
 				showAll();
 				break;
 			case (5):
 				sapXepSvTheoDiemGiamDan();
+				// save file
 				showAll();
 				break;
 			case (6):
@@ -48,6 +56,10 @@ public class QuanLySinhVien {
 				break;
 
 			}
+			// save data
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("SinhVien.txt"));
+			out.writeObject(data);
+			out.close();
 
 			System.out.println("Bạn có muốn thực hiện lại không? Yes/ No?");
 			repeat = keyboard.nextLine();
@@ -63,7 +75,6 @@ public class QuanLySinhVien {
 			return true;
 	}
 
-	// test
 	private static void sapXepSvTheoTuoiTangDan() {
 		for (int i = 0; i < data.length; i++) {
 			final boolean notNull = isNotNull(data[i]);
@@ -147,28 +158,6 @@ public class QuanLySinhVien {
 		}
 	}
 
-	private static void saveData(SinhVien sv) {
-		try {
-			// Create A file
-			File sinhVienFile = new File("Sinhvien.txt");
-			// Create A writer
-			PrintStream writer = new PrintStream(sinhVienFile);
-			// Save elements in Array one by one
-			data[size] = sv;
-			writer.println(sv.getTen());
-			writer.println(sv.getDiaChi());
-			writer.println(sv.getDiemIelts());
-			writer.println(sv.getSoCmt());
-			writer.println(sv.getTuoi());
-			size++;
-			// Close writer
-			writer.close();
-		} // end try
-		catch (FileNotFoundException fnf) {
-			System.err.println("The file was not found.");
-		}
-	}
-
 	private static void xoaSinhVien() {
 		System.out.println("Nhập số CMT của sinh viên bạn muốn xóa:");
 		Scanner keyboard = new Scanner(System.in);
@@ -180,6 +169,7 @@ public class QuanLySinhVien {
 				break;
 			}
 		}
+		size--;
 	}
 
 	public int size() {
@@ -236,6 +226,6 @@ class SinhVien implements Serializable { // Chỗ này để lưu trữ thông t
 
 	@Override
 	public String toString() {
-		return ten + "\t" + diaChi + "\t" + tuoi + "\t" + soCmt + "\t" + diemIelts;
+		return "\t" + ten + "\t" + diaChi + "\t" + tuoi + "\t" + soCmt + "\t" + diemIelts;
 	}
 }
