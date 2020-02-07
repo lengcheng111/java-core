@@ -1,11 +1,9 @@
 package com.oop.qlsv;
 
-import java.io.BufferedWriter;
+import java.io.DataOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.Serializable;
-import java.io.Writer;
 import java.util.Scanner;
 
 public class QuanLySinhVien {
@@ -147,16 +145,15 @@ public class QuanLySinhVien {
 	private static void saveData() throws IOException {
 		// save data
 		FileOutputStream fos = new FileOutputStream("outfilename.txt", true);
-		Writer out = new BufferedWriter(new OutputStreamWriter(fos));
-		// new FileOutputStream("outfilename.txt"), "UTF-8"
+		DataOutputStream dos = new DataOutputStream(fos);
 		try {
 			for (SinhVien sinhVien : data) {
 				if (sinhVien != null) {
-					out.write(sinhVien.toString() + "\n");
+					dos.writeUTF(sinhVien.toString() + "\n");
 
 				}
 			}
-			out.close();
+			dos.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
