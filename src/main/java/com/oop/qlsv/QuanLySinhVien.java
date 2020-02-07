@@ -1,18 +1,20 @@
 package com.oop.qlsv;
 
-import java.io.FileNotFoundException;
+import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.OutputStreamWriter;
 import java.io.Serializable;
+import java.io.Writer;
 import java.util.Scanner;
 
 public class QuanLySinhVien {
 	private static SinhVien[] data;
 	private static int size;
 
-	public static void main(String[] args) throws FileNotFoundException, IOException { // hàm thực thi công việc chính
+	public static void main(String[] args) throws IOException { // hàm thực thi công việc chính
 		data = new SinhVien[100];
+		loadData();
 		String repeat = null;
 		int option;
 		do {
@@ -56,15 +58,16 @@ public class QuanLySinhVien {
 				break;
 
 			}
-			// save data
-			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("SinhVien.txt"));
-			out.writeObject(data);
-			out.close();
-
+			// k phai ở đây
 			System.out.println("Bạn có muốn thực hiện lại không? Yes/ No?");
 			repeat = keyboard.nextLine();
 
 		} while (repeat.equals("Yes") == true);
+
+	}
+
+	private static void loadData() {
+		// đọc dữ liệu từ file vào mảng
 	}
 
 	// Check an element is null or not
@@ -111,7 +114,7 @@ public class QuanLySinhVien {
 		}
 	}
 
-	private static void themSinhVien() {
+	private static void themSinhVien() throws IOException {
 		String ten;
 		String diaChi;
 		int tuoi;
@@ -137,6 +140,27 @@ public class QuanLySinhVien {
 		sv.setTuoi(tuoi);
 		data[size] = sv;
 		size++;
+		// nhập xong từ bàn phím, lư vào mảng, rồi mới từ mảng đẩy vào file txt chứ.
+		saveData();
+	}
+
+	private static void saveData() throws IOException {
+		// save data
+		FileOutputStream fos = new FileOutputStream("outfilename.txt", true);
+		Writer out = new BufferedWriter(new OutputStreamWriter(fos));
+		// new FileOutputStream("outfilename.txt"), "UTF-8"
+		try {
+			for (SinhVien sinhVien : data) {
+				if (sinhVien != null) {
+					out.write(sinhVien.toString() + "\n");
+
+				}
+			}
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private static void editSinhVien() {
