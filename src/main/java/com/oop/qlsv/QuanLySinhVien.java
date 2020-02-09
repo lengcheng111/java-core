@@ -1,6 +1,7 @@
 package com.oop.qlsv;
 
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
@@ -9,6 +10,7 @@ import java.util.Scanner;
 public class QuanLySinhVien {
 	private static SinhVien[] data;
 	private static int size;
+	private static final String filepath = "D:\\New Place to Code\\java-core-basic\\student.txt";
 
 	public static void main(String[] args) throws IOException { // hàm thực thi công việc chính
 		data = new SinhVien[100];
@@ -64,8 +66,38 @@ public class QuanLySinhVien {
 
 	}
 
+	int sizes = 0;
+	private static Scanner x;
+
 	private static void loadData() {
-		// đọc dữ liệu từ file vào mảng
+
+		System.out.println(" Loading files...");
+		try {
+			x = new Scanner(new File("student.txt"));
+		} catch (Exception ex) {
+			System.out.println("File not found :D");
+		}
+		while (x.hasNext()) {
+			// gan' tung field trong file *txt sang bien tuong uong.
+			String name = x.next();
+			String address = x.next();
+			int age = x.nextInt();
+			int id = x.nextInt();
+			float diem = x.nextFloat();
+			// tao bien sv de gan' vao mang
+			SinhVien sv = new SinhVien();
+			sv.setTen(name);
+			sv.setDiaChi(address);
+			sv.setTuoi(age);
+			sv.setSoCmt(id);
+			sv.setDiemIelts(diem);
+			// gan vao mang
+			data[size] = sv;
+			// tang kich thuoc mang
+			size++;
+		}
+		System.out.println(" files sucessfully loaded");
+
 	}
 
 	// Check an element is null or not
@@ -113,7 +145,6 @@ public class QuanLySinhVien {
 	}
 
 	private static void themSinhVien() throws IOException {
-		String ten;
 		String diaChi;
 		int tuoi;
 		int soCmt;
@@ -121,7 +152,7 @@ public class QuanLySinhVien {
 		Scanner keyboard = new Scanner(System.in);
 		SinhVien sv = new SinhVien();
 		System.out.println("Nhập tên:");
-		ten = keyboard.nextLine();
+		String ten = keyboard.nextLine();
 		System.out.println("Nhập địa chỉ:");
 		diaChi = keyboard.nextLine();
 		System.out.println("Nhập tuổi:");
@@ -144,7 +175,7 @@ public class QuanLySinhVien {
 
 	private static void saveData() throws IOException {
 		// save data
-		FileOutputStream fos = new FileOutputStream("outfilename.txt", true);
+		FileOutputStream fos = new FileOutputStream(filepath, true);
 		DataOutputStream dos = new DataOutputStream(fos);
 		try {
 			for (SinhVien sinhVien : data) {
@@ -153,6 +184,8 @@ public class QuanLySinhVien {
 
 				}
 			}
+			System.out.println("Thông tin sinh viên đã được lưu !");
+			fos.close();
 			dos.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -247,6 +280,7 @@ class SinhVien implements Serializable { // Chỗ này để lưu trữ thông t
 
 	@Override
 	public String toString() {
-		return "\t" + ten + "\t" + diaChi + "\t" + tuoi + "\t" + soCmt + "\t" + diemIelts;
+		return ten + " " + diaChi + " " + tuoi + " " + soCmt + " " + diemIelts;
 	}
+
 }
