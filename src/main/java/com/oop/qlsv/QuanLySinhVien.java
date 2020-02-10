@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class QuanLySinhVien {
 	private static SinhVien[] data;
 	private static int size;
-	private static final String filepath = "D:\\New Place to Code\\java-core-basic\\student.txt";
+	private static String filepath = "D:\\New Place to Code\\java-core-basic\\student.txt";
 
 	public static void main(String[] args) throws IOException { // hàm thực thi công việc chính
 		data = new SinhVien[100];
@@ -73,7 +73,8 @@ public class QuanLySinhVien {
 
 		System.out.println(" Loading files...");
 		try {
-			x = new Scanner(new File("student.txt"));
+			File input = new File("student.txt");
+			x = new Scanner(input).useDelimiter("\\s*;\\s*");
 		} catch (Exception ex) {
 			System.out.println("File not found :D");
 		}
@@ -280,7 +281,7 @@ class SinhVien implements Serializable { // Chỗ này để lưu trữ thông t
 
 	@Override
 	public String toString() {
-		return ten + " " + diaChi + " " + tuoi + " " + soCmt + " " + diemIelts;
+		return ten + ";" + diaChi + ";" + tuoi + ";" + soCmt + ";" + diemIelts + ";";
 	}
 
 }
