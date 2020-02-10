@@ -11,6 +11,7 @@ public class QuanLySinhVien {
 	private static SinhVien[] data;
 	private static int size;
 	private static String filename = "studentdata.txt";
+	private static Scanner keyboard = new Scanner(System.in);
 
 	public static void main(String[] args) throws IOException { // hàm thực thi công việc chính
 		data = new SinhVien[100];
@@ -25,7 +26,6 @@ public class QuanLySinhVien {
 			System.out.println(" 4. show all sinh viên");
 			System.out.println(" 5. Sắp xếp Sinh Viên theo điểm giảm dần");
 			System.out.println(" 6. Sắp xếp Sinh viên theo tuổi tăng dần");
-			Scanner keyboard = new Scanner(System.in);
 			option = keyboard.nextInt();
 			keyboard.nextLine();
 			switch (option) {
@@ -62,15 +62,13 @@ public class QuanLySinhVien {
 			System.out.println("Bạn có muốn thực hiện lại không? Yes/ No?");
 			repeat = keyboard.nextLine();
 
-		} while (repeat.equals("Yes") == true);
+		} while (repeat.equals("Yes"));
 
 	}
 
-	int sizes = 0;
-	private static Scanner x;
-
 	private static void loadData() {
-
+		int docfile = 0;
+		Scanner x = null;
 		System.out.println(" Loading files...");
 		try {
 			File input = new File(filename);
@@ -93,9 +91,9 @@ public class QuanLySinhVien {
 			sv.setSoCmt(id);
 			sv.setDiemIelts(diem);
 			// gan vao mang
-			data[size] = sv;
+			data[docfile] = sv;
 			// tang kich thuoc mang
-			size++;
+			++docfile;
 		}
 		System.out.println(" files sucessfully loaded");
 
@@ -103,10 +101,7 @@ public class QuanLySinhVien {
 
 	// Check an element is null or not
 	private static boolean isNotNull(SinhVien x) {
-		if (x == null) {
-			return false;
-		} else
-			return true;
+		return x == null ? false : true;
 	}
 
 	private static void sapXepSvTheoTuoiTangDan() {
@@ -146,22 +141,17 @@ public class QuanLySinhVien {
 	}
 
 	private static void themSinhVien() throws IOException {
-		String diaChi;
-		int tuoi;
-		int soCmt;
-		float diemIelts;
-		Scanner keyboard = new Scanner(System.in);
 		SinhVien sv = new SinhVien();
 		System.out.println("Nhập tên:");
 		String ten = keyboard.nextLine();
 		System.out.println("Nhập địa chỉ:");
-		diaChi = keyboard.nextLine();
+		String diaChi = keyboard.nextLine();
 		System.out.println("Nhập tuổi:");
-		tuoi = keyboard.nextInt();
+		int tuoi = Integer.parseInt(keyboard.nextLine());
 		System.out.println("Nhập số chứng minh thư");
-		soCmt = keyboard.nextInt();
+		int soCmt = Integer.parseInt(keyboard.nextLine());
 		System.out.println("Nhập số điểm Ielts");
-		diemIelts = keyboard.nextFloat();
+		float diemIelts = Float.parseFloat(keyboard.nextLine());
 		keyboard.nextLine();
 		sv.setTen(ten);
 		sv.setDiaChi(diaChi);
@@ -194,10 +184,9 @@ public class QuanLySinhVien {
 		}
 	}
 
-	private static void editSinhVien() {
-		Scanner keyboard = new Scanner(System.in);
+	private static void editSinhVien() throws IOException {
 		System.out.println(" Mời bạn nhập số cmt của sinh viên cần update thông tin:");
-		int cmts = keyboard.nextInt();
+		int cmts = Integer.parseInt(keyboard.nextLine());
 		keyboard.nextLine();
 		for (int i = 0; i < data.length; i++) {
 			if (data[i] != null && (data[i].getSoCmt() == cmts)) {
@@ -206,17 +195,17 @@ public class QuanLySinhVien {
 				System.out.println("Tên mới");
 				data[i].setTen(keyboard.nextLine());
 				System.out.println("Điểm Ielts mới");
-				data[i].setDiemIelts(keyboard.nextFloat());
+				data[i].setDiemIelts(Float.parseFloat(keyboard.nextLine()));
 				System.out.println("Tuổi mới");
-				data[i].setTuoi(keyboard.nextInt());
+				data[i].setTuoi(Integer.parseInt(keyboard.nextLine()));
 			}
 		}
+		saveData();
 	}
 
 	private static void xoaSinhVien() {
 		System.out.println("Nhập số CMT của sinh viên bạn muốn xóa:");
-		Scanner keyboard = new Scanner(System.in);
-		int cmts = keyboard.nextInt();
+		int cmts = Integer.parseInt(keyboard.nextLine());
 		for (int i = 0; i < data.length; i++) {
 			if ((data[i].getSoCmt() == cmts)) {
 				data[i] = null;
