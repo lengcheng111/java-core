@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class QuanLySinhVien {
 	private static SinhVien[] data;
 	private static int size;
-	private static String filepath = "D:\\New Place to Code\\java-core-basic\\student.txt";
+	private static String filename = "studentdata.txt";
 
 	public static void main(String[] args) throws IOException { // hàm thực thi công việc chính
 		data = new SinhVien[100];
@@ -73,7 +73,7 @@ public class QuanLySinhVien {
 
 		System.out.println(" Loading files...");
 		try {
-			File input = new File("student.txt");
+			File input = new File(filename);
 			x = new Scanner(input).useDelimiter("\\s*;\\s*");
 		} catch (Exception ex) {
 			System.out.println("File not found :D");
@@ -176,7 +176,7 @@ public class QuanLySinhVien {
 
 	private static void saveData() throws IOException {
 		// save data
-		FileOutputStream fos = new FileOutputStream(filepath, true);
+		FileOutputStream fos = new FileOutputStream(filename, true);
 		DataOutputStream dos = new DataOutputStream(fos);
 		try {
 			for (SinhVien sinhVien : data) {
