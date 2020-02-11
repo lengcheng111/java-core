@@ -3,7 +3,9 @@ package com.oop.qlsv;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.Scanner;
 
@@ -110,7 +112,7 @@ public class QuanLySinhVien {
 		return x == null ? false : true;
 	}
 
-	private static void sapXepSvTheoTuoiTangDan() {
+	private static void sapXepSvTheoTuoiTangDan() throws IOException {
 		for (int i = 0; i < data.length; i++) {
 			final boolean notNull = isNotNull(data[i]);
 			for (int j = i + 1; j < data.length; j++) {
@@ -121,10 +123,11 @@ public class QuanLySinhVien {
 				}
 			}
 		}
-
+		clearData();
+		saveData();
 	}
 
-	private static void sapXepSvTheoDiemGiamDan() {
+	private static void sapXepSvTheoDiemGiamDan() throws IOException {
 		for (int i = 0; i < data.length; i++) {
 			final boolean notNull = isNotNull(data[i]);
 			for (int j = i + 1; j < data.length; j++) {
@@ -135,6 +138,8 @@ public class QuanLySinhVien {
 				}
 			}
 		}
+		clearData();
+		saveData();
 	}
 
 	private static void showAll() {
@@ -166,18 +171,8 @@ public class QuanLySinhVien {
 		sv.setTuoi(tuoi);
 		data[size] = sv;
 		size++;
-		// save data
-		FileOutputStream fos = new FileOutputStream(filename, true);
-		DataOutputStream dos = new DataOutputStream(fos);
-		try {
-			// lưu vào trong DB
-			dos.writeUTF(sv.toString() + "\n");
-			fos.close();
-			dos.close();
-
-		} catch (IOException e) {
-		}
-
+		clearData();
+		saveData();
 	}
 
 	private static void saveData() throws IOException {
@@ -200,6 +195,14 @@ public class QuanLySinhVien {
 		}
 	}
 
+	public static void clearData() throws IOException {
+		FileWriter fwOb = new FileWriter(filename, false);
+		PrintWriter pwOb = new PrintWriter(fwOb, false);
+		pwOb.flush();
+		pwOb.close();
+		fwOb.close();
+	}
+
 	private static void editSinhVien() throws IOException {
 		System.out.println(" Mời bạn nhập số cmt của sinh viên cần update thông tin:");
 		int cmts = Integer.parseInt(keyboard.nextLine());
@@ -216,10 +219,11 @@ public class QuanLySinhVien {
 				data[i].setTuoi(Integer.parseInt(keyboard.nextLine()));
 			}
 		}
+		clearData();
 		saveData();
 	}
 
-	private static void xoaSinhVien() {
+	private static void xoaSinhVien() throws IOException {
 		System.out.println("Nhập số CMT của sinh viên bạn muốn xóa:");
 		int cmts = Integer.parseInt(keyboard.nextLine());
 		for (int i = 0; i < data.length; i++) {
@@ -230,6 +234,8 @@ public class QuanLySinhVien {
 			}
 		}
 		size--;
+		clearData();
+		saveData();
 	}
 
 	public int size() {
