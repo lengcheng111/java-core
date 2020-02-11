@@ -68,35 +68,41 @@ public class QuanLySinhVien {
 
 	private static void loadData() {
 		int docfile = 0;
-		Scanner x = null;
+		Scanner scanData = null;
 		System.out.println(" Loading files...");
 		try {
 			File input = new File(filename);
-			x = new Scanner(input).useDelimiter("\\s*;\\s*");
+			scanData = new Scanner(input).useDelimiter("\\s*;\\s*");
+			while (scanData.hasNext()) {
+				// gan' tung field trong file *txt sang bien tuong uong.
+				String name = scanData.next();
+				String address = scanData.next();
+				int age = scanData.nextInt();
+				int id = scanData.nextInt();
+				float diem = scanData.nextFloat();
+				// tao bien sv de gan' vao mang
+				SinhVien sv = new SinhVien();
+				sv.setTen(name);
+				sv.setDiaChi(address);
+				sv.setTuoi(age);
+				sv.setSoCmt(id);
+				sv.setDiemIelts(diem);
+				// gan vao mang
+				data[docfile] = sv;
+				// tang kich thuoc mang
+				docfile++;
+			}
 		} catch (Exception ex) {
 			System.out.println("File not found :D");
+		} finally {
+			if (scanData != null) {
+				scanData.close();
+			}
 		}
-		while (x.hasNext()) {
-			// gan' tung field trong file *txt sang bien tuong uong.
-			String name = x.next();
-			String address = x.next();
-			int age = x.nextInt();
-			int id = x.nextInt();
-			float diem = x.nextFloat();
-			// tao bien sv de gan' vao mang
-			SinhVien sv = new SinhVien();
-			sv.setTen(name);
-			sv.setDiaChi(address);
-			sv.setTuoi(age);
-			sv.setSoCmt(id);
-			sv.setDiemIelts(diem);
-			// gan vao mang
-			data[docfile] = sv;
-			// tang kich thuoc mang
-			++docfile;
-		}
-		System.out.println(" files sucessfully loaded");
 
+		System.out.println(" files sucessfully loaded");
+		System.out.println(" Số lượng sinh viên hiện tại: " + docfile);
+		size = docfile;
 	}
 
 	// Check an element is null or not
@@ -160,8 +166,18 @@ public class QuanLySinhVien {
 		sv.setTuoi(tuoi);
 		data[size] = sv;
 		size++;
-		// nhập xong từ bàn phím, lư vào mảng, rồi mới từ mảng đẩy vào file txt chứ.
-		saveData();
+		// save data
+		FileOutputStream fos = new FileOutputStream(filename, true);
+		DataOutputStream dos = new DataOutputStream(fos);
+		try {
+			// lưu vào trong DB
+			dos.writeUTF(sv.toString() + "\n");
+			fos.close();
+			dos.close();
+
+		} catch (IOException e) {
+		}
+
 	}
 
 	private static void saveData() throws IOException {
